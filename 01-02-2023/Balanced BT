@@ -1,0 +1,37 @@
+class Solution {
+    public int depth(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        if(root.left!=null&&root.right!=null){
+            return (1+Math.max(depth(root.left),depth(root.right)));
+        }
+        if(root.left!=null){
+            return(1+depth(root.left));
+        }
+        return(1+depth(root.right));
+    }
+    public boolean isBalanced(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        int a=0;
+        int b=0;
+        if(root.left==null){
+            a=0;
+        }
+        else{
+            a=depth(root.left);
+        }
+        if(root.right==null){
+            b=0;
+        }
+        else{
+            b=depth(root.right);
+        }
+        if(Math.abs(a-b)<=1){
+            return(isBalanced(root.left) && isBalanced(root.right));
+        }
+        return false;
+    }
+}
