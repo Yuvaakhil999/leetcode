@@ -1,0 +1,13 @@
+public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
+        boolean visited[] = new boolean[V];
+        ArrayList<Integer> dfs = new ArrayList<>();
+        getDfs(0,adj,dfs,visited);
+        return dfs;
+    }
+    public void getDfs(int source, ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> dfs, boolean visited[]){
+        visited[source] = true;
+        dfs.add(source);
+        for(Integer i: adj.get(source)){
+            if(!visited[i]) getDfs(i,adj,dfs,visited);
+        }
+    }
